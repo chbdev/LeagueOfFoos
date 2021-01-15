@@ -4,35 +4,43 @@ using UnityEngine;
 
 public class Amumu : Champion
 {
+//public
+    [Header("E")]
+    public float m_E_Range;
+    public float m_E_Damage;
+
     [Header("R")]
-    float m_Range;
-    float m_Damage;
-    float m_StunTime;
+    public float m_R_Range;
+    public float m_R_Damage;
+    public float m_R_StunTime;
 
     protected override void Passive()
     {
     }
-
     protected override void Q()
     {
     }
-
-    protected override void E()
-    {
-    }
-
     protected override void W()
     {
     }
-
+    protected override void E()
+    {
+        ChampionHelper.ForChampionInRange(this.gameObject, m_E_Range,
+            (Champion target) =>
+            {
+                Passive();
+                target.HandleDamage(m_E_Damage);
+            }
+        );
+    }
     protected override void R()
     {
-        ChampionHelper.ForChampionInRange(this.gameObject, m_Range, 
+        ChampionHelper.ForChampionInRange(this.gameObject, m_R_Range, 
             (Champion target) => 
                 {
                     Passive();
-                    target.HandleDamage(m_Damage);
-                    target.HandleStun(m_StunTime);
+                    target.HandleDamage(m_R_Damage);
+                    target.HandleStun(m_R_StunTime);
                 }
         );
     }

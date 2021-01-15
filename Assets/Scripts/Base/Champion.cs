@@ -1,36 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Assertions;
 
-public abstract class Champion : MonoBehaviour
+public abstract class Champion : Entity
 {
-    //public 
     //protected
-    //private
-    float m_Hp;
-    NavMeshAgent m_NavMesAgent;
-
     protected abstract void Passive();
     protected abstract void Q();
     protected abstract void W();
     protected abstract void E();
     protected abstract void R();
-
-    public virtual void HandleDamage(float damage)
-    {
-        m_Hp -= damage;        
-    }
-    public virtual void HandleStun(float time)
-    {
-
-    }
-    private void Start()
-    {
-        m_NavMesAgent = GetComponent<NavMeshAgent>();
-        Assert.IsNotNull(m_NavMesAgent);
-    }
 
     protected virtual void Update()
     {
