@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FopoChampion : Champion
+public class FooChampion : Champion
 {
     protected override void E()
     {

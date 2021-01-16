@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
 
-public abstract class Entity : MonoBehaviour
+public class Entity : MonoBehaviour
 {
 //public 
 //protected
@@ -12,7 +12,7 @@ public abstract class Entity : MonoBehaviour
     protected NavMeshAgent m_NavMesAgent;
 //private
 
-    void Start()
+    void Awake()
     {
         m_NavMesAgent = GetComponent<NavMeshAgent>();
         Assert.IsNotNull(m_NavMesAgent);
@@ -26,5 +26,10 @@ public abstract class Entity : MonoBehaviour
     public virtual void HandleStun(float time)
     {
 
+    }
+
+    public void SetDestination(Vector3 pos)
+    {
+        m_NavMesAgent.SetDestination(pos);
     }
 }

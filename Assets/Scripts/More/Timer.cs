@@ -7,9 +7,9 @@ public class Timer : MonoBehaviour
     private float m_Time;
     private bool m_Running;
 
-    public Timer()
+    public Timer(float time)
     {
-        m_Time = 0.0f;
+        SetTime(time);
     }
 
     private void Update()
@@ -34,5 +34,4 @@ public class Timer : MonoBehaviour
     {
         return m_Time <= 0.0f;
     }
-
 }
