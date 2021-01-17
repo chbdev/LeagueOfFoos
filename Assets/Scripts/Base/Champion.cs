@@ -7,19 +7,19 @@ public abstract class Champion : Entity
 {
     //protected
     protected abstract void Passive();
-    protected abstract void Q();
-    protected abstract void W();
-    protected abstract void E();
-    protected abstract void R();
+    protected abstract void Q(bool pressed);
+    protected abstract void W(bool pressed);
+    protected abstract void E(bool pressed);
+    protected abstract void R(bool pressed);
 
     protected virtual void Update()
     {
         //Abilities
         Passive();
-        Q();
-        W();
-        E();
-        R();
+        Q(Input.GetKeyDown(KeyCode.Q));
+        W(Input.GetKeyDown(KeyCode.W));
+        E(Input.GetKeyDown(KeyCode.E));
+        R(Input.GetKeyDown(KeyCode.R));
 
         //Mouse
         if (Input.GetKeyDown(KeyCode.Mouse1))

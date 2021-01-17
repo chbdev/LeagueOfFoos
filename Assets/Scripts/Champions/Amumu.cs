@@ -17,31 +17,37 @@ public class Amumu : Champion
     protected override void Passive()
     {
     }
-    protected override void Q()
+    protected override void Q(bool pressed)
     {
     }
-    protected override void W()
+    protected override void W(bool pressed)
     {
     }
-    protected override void E()
+    protected override void E(bool pressed)
     {
-        ChampionHelper.ForChampionInRange(this.gameObject, m_E_Range,
-            (Champion target) =>
-            {
-                Passive();
-                target.HandleDamage(m_E_Damage);
-            }
-        );
-    }
-    protected override void R()
-    {
-        ChampionHelper.ForChampionInRange(this.gameObject, m_R_Range, 
-            (Champion target) => 
+        if(pressed)
+        {
+            ChampionHelper.ForChampionInRange(this.gameObject, m_E_Range,
+                (Champion target) =>
                 {
                     Passive();
-                    target.HandleDamage(m_R_Damage);
-                    target.HandleStun(m_R_StunTime);
+                    target.HandleDamage(m_E_Damage);
                 }
-        );
+            );
+        }
+    }
+    protected override void R(bool pressed)
+    {
+        if(pressed)
+        {
+            ChampionHelper.ForChampionInRange(this.gameObject, m_R_Range, 
+                (Champion target) => 
+                    {
+                        Passive();
+                        target.HandleDamage(m_R_Damage);
+                        target.HandleStun(m_R_StunTime);
+                    }
+            );
+        }
     }
 }

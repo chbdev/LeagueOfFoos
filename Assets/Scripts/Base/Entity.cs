@@ -25,7 +25,9 @@ public class Entity : MonoBehaviour
 
     public virtual void HandleStun(float time)
     {
-
+        Debug.Log(this.name + " has been stunned");
+        m_NavMesAgent.speed = 0.0f;
+        m_NavMesAgent.angularSpeed = 0.0f;
     }
 
     public void SetDestination(Vector3 pos)

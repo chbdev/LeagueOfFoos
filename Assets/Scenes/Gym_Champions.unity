@@ -492,6 +492,18 @@ MonoBehaviour:
   - {fileID: 57214917}
   - {fileID: 651693615}
   m_ReachedDistance: 1
+--- !u!114 &1156908324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156908322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51d950697588954cb1b51d1d46c1984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1237427884
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,9 +742,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_E_Range: 0
   m_E_Damage: 0
-  m_R_Range: 0
-  m_R_Damage: 0
-  m_R_StunTime: 0
+  m_R_Range: 20
+  m_R_Damage: 20
+  m_R_StunTime: 20
 --- !u!195 &1300702537
 NavMeshAgent:
   m_ObjectHideFlags: 0
