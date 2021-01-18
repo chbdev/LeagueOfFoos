@@ -27,7 +27,7 @@ public class Amumu : Champion
     {
         if(pressed)
         {
-            ChampionHelper.ForChampionInRange(this.gameObject, m_E_Range,
+            ChampionHelper.ForChampionInRangeExclusingSource(this.gameObject, m_E_Range,
                 (Champion target) =>
                 {
                     Passive();
@@ -40,12 +40,13 @@ public class Amumu : Champion
     {
         if(pressed)
         {
-            ChampionHelper.ForChampionInRange(this.gameObject, m_R_Range, 
+            ChampionHelper.ForChampionInRangeExclusingSource(this.gameObject, m_R_Range, 
                 (Champion target) => 
                     {
                         Passive();
                         target.HandleDamage(m_R_Damage);
                         target.HandleStun(m_R_StunTime);
+
                     }
             );
         }
