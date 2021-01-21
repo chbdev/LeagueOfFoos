@@ -17,15 +17,10 @@ public class Amumu : Champion
     protected override void Passive()
     {
     }
-    protected override void Q(bool pressed)
+
+    protected override void FeedAbilities()
     {
-    }
-    protected override void W(bool pressed)
-    {
-    }
-    protected override void E(bool pressed)
-    {
-        if(pressed)
+        m_Abilities[2].SetAction(() =>
         {
             ChampionHelper.ForChampionInRangeExclusingSource(this.gameObject, m_E_Range,
                 (Champion target) =>
@@ -34,21 +29,18 @@ public class Amumu : Champion
                     target.HandleDamage(m_E_Damage, Damages.Magic);
                 }
             );
-        }
-    }
-    protected override void R(bool pressed)
-    {
-        if(pressed)
+        });
+        
+        m_Abilities[3].SetAction(() =>
         {
-            ChampionHelper.ForChampionInRangeExclusingSource(this.gameObject, m_R_Range, 
-                (Champion target) => 
-                    {
-                        Passive();
-                        target.HandleDamage(m_R_Damage, Damages.Magic);
-                        target.HandleStun(m_R_StunTime);
-
-                    }
+            ChampionHelper.ForChampionInRangeExclusingSource(this.gameObject, m_R_Range,
+                (Champion target) =>
+                {
+                    Passive();
+                    target.HandleDamage(m_R_Damage, Damages.Magic);
+                    target.HandleStun(m_R_StunTime);
+                }
             );
-        }
+        });
     }
 }

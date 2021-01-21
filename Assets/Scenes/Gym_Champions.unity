@@ -314,6 +314,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527570401}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &576477675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576477676}
+  - component: {fileID: 576477677}
+  m_Layer: 0
+  m_Name: AbilityTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &576477676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576477675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7819362, y: 0.28057128, z: 1.3812692}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576477677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576477675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e112f94c05a62a442b3122a9802311f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CdTime: 10
+  m_AssociatedKey: 114
 --- !u!1 &651693615
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,10 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51d950697588954cb1b51d1d46c1984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Q_CD: 0
-  m_W_CD: 0
-  m_E_CD: 0
-  m_R_CD: 5
+  m_Abilities: []
 --- !u!1 &1237427884
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,10 +786,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3997b250b237347bf34ea7dfac7609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Q_CD: 2
-  m_W_CD: 2
-  m_E_CD: 2
-  m_R_CD: 2
+  m_Abilities:
+  - {fileID: 576477677}
+  - {fileID: 576477677}
+  - {fileID: 576477677}
+  - {fileID: 576477677}
   m_E_Range: 0
   m_E_Damage: 0
   m_R_Range: 20
