@@ -31,7 +31,7 @@ public class Amumu : Champion
                 (Champion target) =>
                 {
                     Passive();
-                    target.HandleDamage(m_E_Damage);
+                    target.HandleDamage(m_E_Damage, Damages.Magic);
                 }
             );
         }
@@ -44,7 +44,7 @@ public class Amumu : Champion
                 (Champion target) => 
                     {
                         Passive();
-                        target.HandleDamage(m_R_Damage);
+                        target.HandleDamage(m_R_Damage, Damages.Magic);
                         target.HandleStun(m_R_StunTime);
 
                     }

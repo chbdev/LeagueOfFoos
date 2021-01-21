@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer
 {
     private float m_Time;
-    private bool m_Running;
+    private bool m_Running = true;
 
     public Timer(float time)
     {
         SetTime(time);
     }
-
-    private void Update()
+    public void Update(float dt)
     {
-        m_Time -= Time.deltaTime;
-        m_Time = Mathf.Clamp(m_Time, 0.0f, float.MaxValue);
+        if(m_Running)
+        {
+            m_Time -= dt;
+            m_Time = Mathf.Clamp(m_Time, 0.0f, float.MaxValue);
+        }
     }
 
     public void SetTime(float time)
@@ -33,5 +35,9 @@ public class Timer : MonoBehaviour
     public bool IsElapsed()
     {
         return m_Time <= 0.0f;
+    }
+    public bool IsRunning()
+    {
+        return m_Running;
     }
 }

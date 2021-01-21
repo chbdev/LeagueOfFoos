@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
         Assert.IsNotNull(m_NavMesAgent);
     }
 
-    public virtual void HandleDamage(float damage)
+    public virtual void HandleDamage(float damage, Damages damageType)
     {
         m_Hp -= damage;
     }
