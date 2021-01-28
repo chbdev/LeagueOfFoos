@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class FooChampion : Champion
 {
-    protected override void FeedAbilities()
-    {
-    }
-
-    protected override void Passive()
+    public override void Passive()
     {
     }
 }

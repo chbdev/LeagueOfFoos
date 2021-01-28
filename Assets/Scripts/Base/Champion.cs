@@ -5,15 +5,21 @@ using UnityEngine.Assertions;
 
 public abstract class Champion : Entity
 {
-    //protected
-    protected abstract void Passive();
-    protected abstract void FeedAbilities();
 
+//public
+    public abstract void Passive();
     public Ability[] m_Abilities;
 
-    private void Start()
+    protected void Awake()
     {
-        FeedAbilities();
+        base.Awake();
+        foreach (Ability ability in m_Abilities)
+        {
+            if(ability)
+            {
+                ability.SetOwner(this);
+            }
+        }
     }
 
     protected virtual void Update()
@@ -35,7 +41,7 @@ public abstract class Champion : Entity
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                m_NavMesAgent.SetDestination(hit.point);
+                m_NavMeshAgent.SetDestination(hit.point);
             }
         }
     }

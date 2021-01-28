@@ -7,10 +7,17 @@ public class Ability : MonoBehaviour
 {
 //public 
     public float m_CdTime;
+//protected
+    protected Champion m_Owner;
 //private
     [SerializeField] private KeyCode m_AssociatedKey;
     private Timer m_CooldownTimer = new Timer(0.0f);
     private UnityAction m_Action;
+
+    private void Start()
+    {
+        SetAction(GetInternalAction());
+    }
 
     private void Update()
     {
@@ -26,8 +33,11 @@ public class Ability : MonoBehaviour
         m_CooldownTimer.SetTime(m_CdTime);
         m_CooldownTimer.Play();
     }
+
+    protected virtual UnityAction GetInternalAction() { return null; }
     public KeyCode GetAssociatedKey() { return m_AssociatedKey; }
     public void SetAction(UnityAction newValue) { m_Action = newValue; }
+    public void SetOwner(Champion newValue) { m_Owner = newValue; }
 
     
 }
