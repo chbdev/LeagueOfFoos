@@ -11,9 +11,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_Width;
     private Vector3 m_Direction;
-    private UnityAction<Collider> m_OnHit;
-    
-    public void Init(UnityAction<Collider> onHitAction, Vector3 direction)
+    public System.Func<Collider, bool> m_OnHit;
+    private bool m_destroyOnSuccess;
+
+
+    public void Init(System.Func<Collider, bool> onHitAction, Vector3 direction)
     {
         m_OnHit = onHitAction;
         m_Direction = direction;
@@ -27,10 +29,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        m_OnHit(other);
+        bool shouldBeDestroyed = m_OnHit(other);
+        if(shouldBeDestroyed)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    public void SetOnHitAction(UnityAction<Collider> newValue) { m_OnHit = newValue; }
+    public void SetOnHitAction(System.Func<Collider, bool> newValue) { m_OnHit = newValue; }
     public void SetDiretion(Vector3 newValue) { m_Direction = newValue; }
 
 }

@@ -5,7 +5,6 @@ using UnityEngine.Assertions;
 
 public abstract class Champion : Entity
 {
-
 //public
     public abstract void Passive();
     public Ability[] m_Abilities;

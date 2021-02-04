@@ -35,11 +35,15 @@ public class ChampionHelper : MonoBehaviour
         action();
     }
 
-    public static void CreateProjectile(GameObject projectileObject, UnityAction<Collider> action, Vector3 direction, Vector3 startPos)
+    public static void CreateProjectile(GameObject projectileObject, System.Func<Collider, bool> action, Vector3 direction, Vector3 startPos)
     {
         GameObject projectile = Instantiate(projectileObject, startPos, Quaternion.identity);
         Assert.IsTrue(projectile.GetComponent<Projectile>(), "Wrong usage of CreateProjectile. You are creating something that is not a projectile");
 
         projectile.GetComponent<Projectile>().Init(action, direction);
+    }
+
+    public static void DashInDirection(GameObject champion, Vector3 direction, float distance, float speed)
+    {
     }
 }
