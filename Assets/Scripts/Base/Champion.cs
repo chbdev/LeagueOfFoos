@@ -9,6 +9,7 @@ public abstract class Champion : Entity
     public abstract void Passive();
     public Ability[] m_Abilities;
 
+
     protected void Awake()
     {
         base.Awake();

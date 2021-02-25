@@ -6,13 +6,15 @@ using UnityEngine.Events;
 public class Amumu_W : Ability
 {
     [Header("Ability Data")]
-    public float m_Range;
-    public float m_Damage;
+    [SerializeField] private float m_Range;
+    [SerializeField] private float m_Damage;
+    [SerializeField] private ParticleSystem m_EnabledParticleSystem;
 
     protected override UnityAction GetInternalAction()
     {
         return () =>
         {
+            m_EnabledParticleSystem.Play();
             ChampionHelper.ForChampionInRangeExclusingSource(m_Owner.gameObject, m_Range, 
                 (Champion target) =>
                 {

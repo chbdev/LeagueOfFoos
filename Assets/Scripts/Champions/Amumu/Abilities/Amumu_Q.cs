@@ -14,14 +14,14 @@ public class Amumu_Q : Ability
         return () =>
         {
             ChampionHelper.CreateProjectile(m_Projectile, 
-                (Collider other) => 
+                (Collider other, GameObject projectile) => 
                 {
                     Champion champion = null;
                     if (other.gameObject.TryGetComponent<Champion>(out champion))
                     {
                         if(m_Owner != champion)
                         {
-                            StartCoroutine(GoTo(champion.gameObject)); 
+                            StartCoroutine(ChampionHelper.GoToChampion(champion.gameObject, m_Owner.gameObject, m_DashSpeed)); 
                             champion.HandleStun(m_StunTime);
                             return true;
                         }
@@ -30,16 +30,5 @@ public class Amumu_Q : Ability
 
                 }, Vector3.right, m_Owner.transform.position);
         };
-    }
-
-    IEnumerator GoTo(GameObject targetChampion)
-    {
-        //TODO: Esta comprobación tiene que ser "He colisionado con el target" en vez de una distancia fija porque habrá campeones con distintos tamaños
-        while(Vector3.Distance(m_Owner.transform.position, targetChampion.transform.position) > 1.5f)
-        {
-            Vector3 pos = Vector3.MoveTowards(m_Owner.transform.position, targetChampion.transform.position, m_DashSpeed*Time.deltaTime);
-            m_Owner.transform.position = pos;
-            yield return null;
-        }
     }
 }
