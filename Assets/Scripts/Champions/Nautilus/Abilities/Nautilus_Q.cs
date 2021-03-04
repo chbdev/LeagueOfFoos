@@ -9,9 +9,9 @@ public class Nautilus_Q : Ability
     [SerializeField] private GameObject m_Projectile;
     [SerializeField] private float m_DashSpeed;
 
-    protected override UnityAction GetInternalAction()
+    protected override UnityAction<GameObject> GetInternalAction()
     {
-        return () =>
+        return (GameObject target) =>
         {
             RaycastHit hit;
             Vector3 toGo = Vector3.zero;
@@ -36,15 +36,15 @@ public class Nautilus_Q : Ability
                             toTarget.Scale(new Vector3(0.5f, 0.5f, 0.5f));
                             toTarget = m_Owner.gameObject.transform.position + toTarget;
 
-                            StartCoroutine(ChampionHelper.GoToPosition(toTarget, m_Owner.gameObject, 1.0f));
-                            StartCoroutine(ChampionHelper.GoToPosition(toTarget, other.gameObject, 1.0f));
+                            StartCoroutine(ChampionHelper.GoToPosition(toTarget, m_Owner.gameObject, m_DashSpeed));
+                            StartCoroutine(ChampionHelper.GoToPosition(toTarget, other.gameObject, m_DashSpeed));
 
                             return true;
                         }
 
                         if(other.gameObject.tag == "Wall")
                         {
-                            StartCoroutine(ChampionHelper.GoToPosition(projectile.transform.position, m_Owner.gameObject, 1.0f));
+                            StartCoroutine(ChampionHelper.GoToPosition(projectile.transform.position, m_Owner.gameObject, m_DashSpeed));
 
                             return true;
                         }

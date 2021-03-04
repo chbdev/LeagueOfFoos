@@ -55,7 +55,7 @@ public class ChampionHelper : MonoBehaviour
     public static IEnumerator GoToPosition(Vector3 targetPosition, GameObject owner, float speed)
     {
         //TODO: Esta comprobación tiene que ser "He colisionado con el target" en vez de una distancia fija porque habrá campeones con distintos tamaños
-        while (Vector3.Distance(owner.transform.position, targetPosition) > .2f)
+        while (Vector3.Distance(owner.transform.position, targetPosition) > 0.5f)
         {
             Vector3 pos = Vector3.MoveTowards(owner.transform.position, targetPosition, speed * Time.deltaTime);
             owner.transform.position = pos;

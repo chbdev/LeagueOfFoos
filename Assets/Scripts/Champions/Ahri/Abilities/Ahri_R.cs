@@ -9,9 +9,9 @@ public class Ahri_R : Ability
     public float m_Range;
     public float m_Damage;
 
-    protected override UnityAction GetInternalAction()
+    protected override UnityAction<GameObject> GetInternalAction()
     {
-        return () =>
+        return (GameObject target) =>
         {
             
         };

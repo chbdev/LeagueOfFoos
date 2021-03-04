@@ -9,9 +9,9 @@ public class Amumu_Q : Ability
     [SerializeField] private float m_StunTime;
     [SerializeField] private GameObject m_Projectile;
     [SerializeField] private float m_DashSpeed;
-    protected override UnityAction GetInternalAction()
+    protected override UnityAction<GameObject> GetInternalAction()
     {
-        return () =>
+        return (GameObject target) =>
         {
             ChampionHelper.CreateProjectile(m_Projectile, 
                 (Collider other, GameObject projectile) => 

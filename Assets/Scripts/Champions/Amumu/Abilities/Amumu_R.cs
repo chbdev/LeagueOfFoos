@@ -10,9 +10,9 @@ public class Amumu_R : Ability
     public float m_Damage;
     public float m_StunTime;
 
-    protected override UnityAction GetInternalAction()
+    protected override UnityAction<GameObject> GetInternalAction()
     {
-        return () =>
+        return (GameObject target) =>
         {
             ChampionHelper.ForChampionInRangeExclusingSource(m_Owner.gameObject, m_Range,
                 (Champion target) =>

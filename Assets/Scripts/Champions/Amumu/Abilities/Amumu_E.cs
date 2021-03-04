@@ -8,9 +8,9 @@ public class Amumu_E : Ability
     [Header("Ability Data")]
     public float m_Range;
     public float m_Damage;
-    protected override UnityAction GetInternalAction()
+    protected override UnityAction<GameObject> GetInternalAction()
     {
-        return () =>
+        return (GameObject target) =>
         {
             ChampionHelper.ForChampionInRangeExclusingSource(m_Owner.gameObject, m_Range,
                 (Champion target) =>
